@@ -11,6 +11,8 @@ import Navbar from "../../../Components/navBar/navbar";
 // import SuccessToast from "../../components/snackBar/successSnackBar.container";
 // import ErrorToast from "../../components/snackBar/errorSnackBar.container";
 import axios from 'axios';
+import firebase from 'firebase';
+import FBconfig from '../../../assets/secrets/FBconfig'
 
 const styles = theme => ({
   root: {
@@ -57,6 +59,8 @@ class Admin extends React.Component {
       .then(res => {
         console.log(res.data);
         // push user to home page
+
+        firebase.initializeApp(FBconfig)
         this.props.history.push("/admin/dashboard")
       })
       .catch(err => {
