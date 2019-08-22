@@ -8,11 +8,8 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 import Navbar from "../../../Components/navBar/navbar";
-// import SuccessToast from "../../components/snackBar/successSnackBar.container";
-// import ErrorToast from "../../components/snackBar/errorSnackBar.container";
 import axios from 'axios';
-import firebase from 'firebase';
-import FBconfig from '../../../assets/secrets/FBconfig'
+import { withFirebase } from '../../../Components/Firebase';
 
 const styles = theme => ({
   root: {
@@ -44,6 +41,7 @@ class Admin extends React.Component {
       showPassword: false,
       password: "",
       email: "",
+      isAuth: false,
       errors: {}
     };
     this.submit = this.submit.bind(this);
@@ -51,16 +49,10 @@ class Admin extends React.Component {
 
   submit() {
     const { password, email } = this.state;
-    const adminData = {
-      email: email,
-      password: password
-    };
-    axios.post("/admin/login", adminData)
+    this.props.firebase
+      .doSignInWithEmailAndPassword(email, password)
       .then(res => {
         console.log(res.data);
-        // push user to home page
-
-        firebase.initializeApp(FBconfig)
         this.props.history.push("/admin/dashboard")
       })
       .catch(err => {
@@ -90,7 +82,7 @@ class Admin extends React.Component {
                 align="center"
                 style={{ paddingTop: 40 }}
               >
-                Jerome Tieh
+                Hi, Jerome Tieh
               </Typography>
               <Typography variant="h6" style={{ paddingTop: 40 }}>
                 Username
@@ -159,4 +151,4 @@ Admin.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(Admin);
+export default withStyles(styles)(withFirebase(Admin));

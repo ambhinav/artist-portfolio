@@ -14,8 +14,7 @@ import Settings from "@material-ui/icons/Settings";
 import Terrain from "@material-ui/icons/Terrain";
 import Exittoapp from "@material-ui/icons/ExitToApp";
 import { withRouter } from "react-router-dom";
-import axios from "axios";
-import firebase from "firebase";
+import { withFirebase } from '../../Firebase'
 
 const sideNavBarBrowser = [
   {
@@ -95,19 +94,8 @@ class SideDrawer extends Component {
   }
 
   logout() {
-    // // To do post to admin logout endpoint and push user to admin login page
-    // axios
-    //   .get("/admin/logout")
-    //   .then(res => {
-    //     console.log(res);
-    //     this.props.history.push("/admin");
-    //   })
-    //   .catch(err => {
-    //     console.log("Error detected", err);
-    //   });
-    firebase
-      .auth()
-      .signOut()
+    this.props.firebase
+      .doSignOut()
       .then(res => {
           this.props.history.push('/admin')
       })
@@ -158,4 +146,4 @@ SideDrawer.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(withRouter(SideDrawer));
+export default withStyles(styles)(withRouter(withFirebase(SideDrawer)));

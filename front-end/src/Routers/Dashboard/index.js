@@ -5,14 +5,14 @@ import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
 // import Chart from "react-google-charts";
 import NavBar from "../../Components/AdminPages/navBar";
-import Table from "@material-ui/core/Table";
-import TableBody from "@material-ui/core/TableBody";
-import TableCell from "@material-ui/core/TableCell";
-import TableHead from "@material-ui/core/TableHead";
-import TableRow from "@material-ui/core/TableRow";
-import Paper from "@material-ui/core/Paper";
-import Button from "@material-ui/core/Button";
-import TablePagination from "@material-ui/core/TablePagination";
+// import Table from "@material-ui/core/Table";
+// import TableBody from "@material-ui/core/TableBody";
+// import TableCell from "@material-ui/core/TableCell";
+// import TableHead from "@material-ui/core/TableHead";
+// import TableRow from "@material-ui/core/TableRow";
+// import Paper from "@material-ui/core/Paper";
+// import Button from "@material-ui/core/Button";
+// import TablePagination from "@material-ui/core/TablePagination";
 // import Modal from "../../components/dashboard/Modal";
 // import SuccessToast from "../../components/snackBar/successSnackBar.container";
 // import ErrorToast from "../../components/snackBar/errorSnackBar.container";
@@ -37,26 +37,10 @@ const styles = theme => ({
 });
 
 class Dashboard extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   render() {
     const { classes } = this.props;
     const title = "Main";
-    // const heatMapData = [
-    //   [
-    //     {
-    //       type: "date",
-    //       id: "Date"
-    //     },
-    //     {
-    //       type: "number",
-    //       id: "Number of Customers"
-    //     }
-    //   ],
-    //   ...heatmap
-    // ];
     return (
       <div className={classes.root}>
         <CssBaseline />
