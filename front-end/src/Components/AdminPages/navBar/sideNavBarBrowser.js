@@ -97,7 +97,8 @@ class SideDrawer extends Component {
     this.props.firebase
       .doSignOut()
       .then(res => {
-          this.props.history.push('/admin')
+          // this.props.history.push('/admin')
+          console.log('signed out')
       })
       .catch(err => {
         if (err) {

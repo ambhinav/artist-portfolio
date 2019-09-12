@@ -10,6 +10,8 @@ import { Link } from "react-router-dom";
 import Navbar from "../../../Components/navBar/navbar";
 import axios from 'axios';
 import { withFirebase } from '../../../Components/Firebase';
+import { withRouter } from 'react-router-dom';
+import { compose } from 'recompose';
 
 const styles = theme => ({
   root: {
@@ -52,8 +54,7 @@ class Admin extends React.Component {
     this.props.firebase
       .doSignInWithEmailAndPassword(email, password)
       .then(res => {
-        console.log(res.data);
-        this.props.history.push("/admin/dashboard")
+        this.props.history.push('/admin/dashboard');
       })
       .catch(err => {
         this.setState({
@@ -65,6 +66,7 @@ class Admin extends React.Component {
   render() {
     const { classes } = this.props;
     const { errors } = this.state;
+
     return (
       <React.Fragment>
         <Navbar />
@@ -151,4 +153,4 @@ Admin.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(withFirebase(Admin));
+export default withStyles(styles)(compose(withFirebase, withRouter)(Admin));
