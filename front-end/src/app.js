@@ -6,7 +6,7 @@ import App from "./Routers/Home";
 import Work from "./Routers/Work";
 import Info from "./Routers/Info";
 import Notfound from "./Routers/Notfound";
-import Admin from "./Routers/Dashboard/Admin";
+import Admin from "./Routers/Admin"
 
 // Protected routes
 import AdminDashboard from "./Routers/Dashboard";
