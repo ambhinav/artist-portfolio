@@ -7,6 +7,7 @@ import Work from "./Routers/Work";
 import Info from "./Routers/Info";
 import Notfound from "./Routers/Notfound";
 import Admin from "./Routers/Admin"
+import DashboardWork from "./Routers/Dashboard/work"
 
 // Protected routes
 import AdminDashboard from "./Routers/Dashboard";
@@ -32,6 +33,7 @@ const Routing = () => (
         <Route exact path="/admin" component={Admin} />
 
         <ProtectedRoute path="/admin/dashboard" component={AdminDashboard} />
+        <ProtectedRoute path="/admin/dashboard/work" component={DashboardWork} />
 
         <Route component={Notfound} />
       </Switch>

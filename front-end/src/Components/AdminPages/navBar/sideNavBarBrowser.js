@@ -19,12 +19,12 @@ import { withFirebase } from '../../Firebase'
 const sideNavBarBrowser = [
   {
     title: "Dashboard",
-    to: "/dashboard",
+    to: "/admin/dashboard",
     icon: <Dashboard />
   },
   {
     title: "Work",
-    to: "/admin/work",
+    to: "/admin/dashboard/work",
     icon: <Terrain />
   },
   {
