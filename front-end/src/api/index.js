@@ -40,9 +40,13 @@ const putRequest = (url, data) => {
   })
 };
 
-const postRequest = (url, data) => {
+const postRequest = (url, data, token) => {
   return new Promise((resolve, reject) => {
-    axios.post(httpUrl + url, data, { withCredentials: true })
+    let config = { withCredentials: true }
+    if (token) {
+      config.headers = { 'Authorization': 'Bearer ' + token }
+    }
+    axios.post(httpUrl + url, data, config)
       .then(response => {
         resolve(response.data);
         console.log(response)

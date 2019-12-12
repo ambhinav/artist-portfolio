@@ -17,7 +17,7 @@ const { getAllArtWork, getAllRecentArtWork } = require('./handlers/work')
 const { adminLogin, adminLogout, uploadArtWork, updateArtWork, deleteArtWork, uploadRecentArtWork, updateRecentArtWork, deleteRecentArtWork, getAllContactRequests} = require('./handlers/admin')
 
 // Automatically allow cross-origin requests
-app.use(cors({ origin: true }))
+app.use(cors({ origin: true, credentials: true }))
 
 // Admin routes
 app.post("/admin/login", adminLogin);
