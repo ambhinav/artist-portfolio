@@ -25,12 +25,12 @@ import { withFirebase } from "../../Firebase";
 const menuOptions = [
   {
     title: "Dashboard",
-    to: "/dashboard",
+    to: "/admin/dashboard",
     icon: <Dashboard />
   },
   {
     title: "Work",
-    to: "/admin/work",
+    to: "/admin/dashboard/work",
     icon: <Terrain />
   },
   {
@@ -156,4 +156,4 @@ SideDrawer.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(withRouter(withFirebase(SideDrawer)));
+export default withStyles(styles)(withFirebase(withRouter(SideDrawer)));

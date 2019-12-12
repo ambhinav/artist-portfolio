@@ -23,7 +23,7 @@ const styles = theme => ({
     overflowX: "auto",
     width: "100%"
   },
-  //   toolbar: theme.mixins.toolbar,
+  toolbar: theme.mixins.toolbar,
   content: {
     flexGrow: 1,
     padding: theme.spacing(3)
@@ -37,18 +37,33 @@ const styles = theme => ({
 });
 
 class Dashboard extends Component {
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount() {
+    console.log("Dashboard mounted!")
+  }
+
+  componentWillUnmount() {
+    console.log("Dashboard unmounted!")
+  }
 
   render() {
     const { classes } = this.props;
     const title = "Main";
+    const date = new Date().getDate()
+    const month = new Date().getMonth()
+    const year = new Date().getFullYear()
     return (
       <div className={classes.root}>
         <CssBaseline />
         <NavBar title={title} />
         <main className={classes.content}>
-          <div>
-            <Typography>Hi Jerome, today is {new Date().getDate()}</Typography>
-          </div>
+          <div className={classes.toolbar} />
+          <Typography variant="h4" align="center">
+            Hi Jerome, today is { date }-{ month }-{ year } 
+          </Typography>
         </main>
       </div>
     );

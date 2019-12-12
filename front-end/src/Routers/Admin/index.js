@@ -153,4 +153,4 @@ Admin.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(compose(withFirebase, withRouter)(Admin));
+export default compose(withFirebase, withRouter, withStyles(styles))(Admin);

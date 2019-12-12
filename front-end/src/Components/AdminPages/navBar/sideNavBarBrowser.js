@@ -15,6 +15,7 @@ import Terrain from "@material-ui/icons/Terrain";
 import Exittoapp from "@material-ui/icons/ExitToApp";
 import { withRouter } from "react-router-dom";
 import { withFirebase } from '../../Firebase'
+import { compose } from 'recompose'
 
 const sideNavBarBrowser = [
   {
@@ -147,4 +148,4 @@ SideDrawer.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(withRouter(withFirebase(SideDrawer)));
+export default withStyles(styles)(withFirebase(SideDrawer))

@@ -52,6 +52,10 @@ class DashboardWork extends Component {
         this.submit = this.submit.bind(this);
     }
 
+    componentDidMount() {
+        console.log("Work mounted!")
+    }
+
     deleteEntry(event) {
         const id = event.currentTarget.value;
     }
@@ -163,53 +167,55 @@ class DashboardWork extends Component {
         const { imgUrl, title, category } = this.state;
         const navTitle = 'Work';
         return (
-            <div className={classes.root}>
-                <CssBaseline />
-                <NavBar title={navTitle} />
-                <main className={classes.content}>
-                    <div className={classes.toolbar} />
-                    <Typography variant="h4" align="center" style={{ paddingTop: 40 }}>
-                        Add new pictures to { navTitle }
-                    </Typography>
-                    <TextField
-                        multiline={true}
-                        variant="outlined"
-                        fullWidth
-                        value={category}
-                        placeholder="Eg. Character designs"
-                        label="Category of art work"
-                        className={classes.button}
-                        onChange={this.watchCategory}
-                    />
-                    <TextField
-                        multiline={true}
-                        variant="outlined"
-                        fullWidth
-                        value={title}
-                        placeholder="Nioh drawing"
-                        label="Title of art work"
-                        className={classes.button}
-                        onChange={this.watchTitle}
-                    />
-                    <DragAndDrop handleOnDrop={this.handleOnDrop} />
-                    <Grid container alignItems="flex-start" justify="flex-end" direction="row">
-                        <Button variant="contained" onClick={this.submit} className={classes.button}>
-                            Submit
-                        </Button>
-                    </Grid>
-                    {/* <Typography variant="h4" align="center" style={{ paddingTop: 40 }}>
-                        Existing list of { navTitle }
-                    </Typography>
-                    <Grid container alignItems="flex-start" justify="flex-end" direction="row">
-                        <Button variant="contained" onClick={this.resetEntries} className={classes.button}>
-                            Reset
-                        </Button>
-                        <Button variant="contained" color="secondary" onClick={this.submit} className={classes.button}>
-                            Confirm changes
-                        </Button>
-                    </Grid> */}
-                </main>
-            </div>
+            <React.Fragment>
+                <div className={classes.root}>
+                    <CssBaseline />
+                    <NavBar title={navTitle} />
+                    <main className={classes.content}>
+                        <div className={classes.toolbar} />
+                        <Typography variant="h4" align="center" style={{ paddingTop: 40 }}>
+                            Add new pictures to { navTitle }
+                        </Typography>
+                        <TextField
+                            multiline={true}
+                            variant="outlined"
+                            fullWidth
+                            value={category}
+                            placeholder="Eg. Character designs"
+                            label="Category of art work"
+                            className={classes.button}
+                            onChange={this.watchCategory}
+                        />
+                        <TextField
+                            multiline={true}
+                            variant="outlined"
+                            fullWidth
+                            value={title}
+                            placeholder="Nioh drawing"
+                            label="Title of art work"
+                            className={classes.button}
+                            onChange={this.watchTitle}
+                        />
+                        <DragAndDrop handleOnDrop={this.handleOnDrop} />
+                        <Grid container alignItems="flex-start" justify="flex-end" direction="row">
+                            <Button variant="contained" onClick={this.submit} className={classes.button}>
+                                Submit
+                            </Button>
+                        </Grid>
+                        {/* <Typography variant="h4" align="center" style={{ paddingTop: 40 }}>
+                            Existing list of { navTitle }
+                        </Typography>
+                        <Grid container alignItems="flex-start" justify="flex-end" direction="row">
+                            <Button variant="contained" onClick={this.resetEntries} className={classes.button}>
+                                Reset
+                            </Button>
+                            <Button variant="contained" color="secondary" onClick={this.submit} className={classes.button}>
+                                Confirm changes
+                            </Button>
+                        </Grid> */}
+                    </main>
+                </div>
+            </React.Fragment>
         );
     }
 }
