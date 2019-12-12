@@ -11,6 +11,7 @@ import Admin from "./Routers/Admin"
 // Protected routes
 import AdminDashboard from "./Routers/Dashboard";
 import DashboardWork from "./Routers/Dashboard/work"
+import AdminHome from "./Routers/Dashboard/home"
 import AdminContact from './Routers/Dashboard/contact';
         
 // Firebase
@@ -35,6 +36,7 @@ const Routing = () => (
 
         <ProtectedRoute exact path="/admin/dashboard" component={AdminDashboard} />
         <ProtectedRoute exact path="/admin/dashboard/work" component={DashboardWork} />
+        <ProtectedRoute exact path="/admin/home" component={AdminHome} />
         <ProtectedRoute exact path="/admin/contact" component={AdminContact} />
 
         <Route component={Notfound} />

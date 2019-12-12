@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import CssBaseline from "@material-ui/core/CssBaseline";
 import Typography from "@material-ui/core/Typography";
 import { withStyles } from "@material-ui/core/styles";
-import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
 
@@ -11,7 +10,7 @@ import NavBar from "../../../Components/AdminPages/navBar";
 import DragAndDrop from "../../../Components/AdminPages/utils/dropzone";
 import api from "../../../api";
 import { withFirebase } from "../../../Components/Firebase";
-import { compose } from 'recompose';
+import { compose } from "recompose";
 
 const styles = theme => ({
   root: {
@@ -36,30 +35,26 @@ const styles = theme => ({
   }
 });
 
-class DashboardWork extends Component {
+class DashboardHome extends Component {
   constructor(props) {
     super(props);
     this.state = {
       data: {},
-      title: "",
-      category: "",
-			imgUrl: "",
-			files: [],
-			feedback: null
+      imgUrl: "",
+      files: [],
+      feedback: null
     };
     this.deleteEntry = this.deleteEntry.bind(this);
     // this.resetEntries = this.resetEntries.bind(this);
     this.newEntry = this.newEntry.bind(this);
     this.watchImgUrl = this.watchImgUrl.bind(this);
-    this.watchTitle = this.watchTitle.bind(this);
-    this.watchCategory = this.watchCategory.bind(this);
-		this.submit = this.submit.bind(this);
-		this.handleOnDrop = this.handleOnDrop.bind(this)
-		this.retrieveImageUrl = this.retrieveImageUrl.bind(this)
+    this.submit = this.submit.bind(this);
+    this.handleOnDrop = this.handleOnDrop.bind(this);
+    this.retrieveImageUrl = this.retrieveImageUrl.bind(this);
   }
 
   componentDidMount() {
-    console.log("Work mounted!");
+    console.log("Recent work mounted!");
   }
 
   deleteEntry(event) {
@@ -74,14 +69,9 @@ class DashboardWork extends Component {
     const { imgUrl, title, category } = this.state;
     const payload = {
       imgUrl,
-      title,
-      category,
-      edit: true
     };
     this.setState({
       imgUrl: "",
-      title: "",
-      category: "",
     });
   }
 
@@ -91,92 +81,74 @@ class DashboardWork extends Component {
     });
   }
 
-  watchTitle(event) {
-    this.setState({
-      title: event.target.value
-    });
-  }
-
-  watchCategory(event) {
-    this.setState({
-      category: event.target.value
-    });
-  }
-
   handleOnDrop(files) {
-		const fileToUpload = files[0]
-		this.setState({
-			files: fileToUpload
-		})
-		this.props.firebase
-			.uploadFileToStorage("/worksbycategory/" + fileToUpload.name, fileToUpload)
-			.then((uploadTask) => {
-				uploadTask.task
-				.then({'onFullfilled': this.retrieveImageUrl(fileToUpload)})
-				.catch(err => {
-					console.log(err)
-				})
-			})
-			.then(() => {
-				this.setState({
-					feedback: "File uploaded successfully!"	
-				}) 
-			})
-			.catch(err => console.log(err, "Error uploading file to storage!"));
-	}
-	
-	retrieveImageUrl(file) {
-		this.props.firebase
-			.getImageUrl("/worksbycategory/" + file.name)
-			.then(url => {
-				console.log(url)
-				this.setState({
-					imgUrl: url
-				})
-			}).catch(err => console.log(err, "Error obtaining image url"));
-	}
+    const fileToUpload = files[0];
+    this.setState({
+      files: fileToUpload
+    });
+    this.props.firebase
+      .uploadFileToStorage("/recentwork/" + fileToUpload.name, fileToUpload)
+      .then(uploadTask => {
+        uploadTask.task
+          .then({ onFullfilled: this.retrieveImageUrl(fileToUpload) })
+          .catch(err => {
+            console.log(err);
+          });
+      })
+      .then(() => {
+        this.setState({
+          feedback: "File uploaded successfully!"
+        });
+      })
+      .catch(err => console.log(err, "Error uploading file to storage!"));
+  }
 
-	submit() {
-		const { title, category, imgUrl } = this.state;
+  retrieveImageUrl(file) {
+    this.props.firebase
+      .getImageUrl("/recentwork/" + file.name)
+      .then(url => {
+        console.log(url);
+        this.setState({
+          imgUrl: url
+        });
+      })
+      .catch(err => console.log(err, "Error obtaining image url"));
+  }
 
-		const payload = {
-			imgUrl,
-      title,
-			category,
-      edit: true
-		};
+  submit() {
+    const { imgUrl } = this.state;
 
-		this.props.firebase
+    const payload = {
+      imgUrl
+    };
+
+    this.props.firebase
       .getUserToken()
       .then(token => {
-				// make api call to upload to worksByCategory
-				console.log(payload)
+        // make api call to upload to worksByCategory
+        console.log(payload);
         api
-          .post("/admin/work/putartwork", payload, token)
-          .then(res => { 
-						console.log(res)
-						this.setState({
-							imgUrl: '',
-      				title: '',
-							category: '',
-							feedback: 'Artwork uploaded!'
-						})
-					})
+          .post("/admin/home/putrecentwork", payload, token)
+          .then(res => {
+            console.log(res);
+            this.setState({
+              imgUrl: "",
+              feedback: "Artwork uploaded!"
+            });
+          })
           .catch(err => {
             console.log(err, "error");
           });
       })
-			.catch(err => console.log(err, "Error"));
+      .catch(err => console.log(err, "Error"));
 
-		// upload file to storage
-		
-    
-	}
+    // upload file to storage
+  }
 
   render() {
     const { classes } = this.props;
-    const { imgUrl, title, category, feedback } = this.state;
-    const navTitle = "Work";
+    const { feedback } = this.state;
+    const navTitle = "Recent Work";
     return (
       <div className={classes.root}>
         <CssBaseline />
@@ -186,26 +158,6 @@ class DashboardWork extends Component {
           <Typography variant="h4" align="center" style={{ paddingTop: 40 }}>
             Add new pictures to {navTitle}
           </Typography>
-          <TextField
-            multiline={true}
-            variant="outlined"
-            fullWidth
-            value={category}
-            placeholder="Eg. Character designs"
-            label="Category of art work"
-            className={classes.button}
-            onChange={this.watchCategory}
-          />
-          <TextField
-            multiline={true}
-            variant="outlined"
-            fullWidth
-            value={title}
-            placeholder="Nioh drawing"
-            label="Title of art work"
-            className={classes.button}
-            onChange={this.watchTitle}
-          />
           <DragAndDrop handleOnDrop={this.handleOnDrop} />
           <Grid
             container
@@ -213,12 +165,15 @@ class DashboardWork extends Component {
             justify="flex-end"
             direction="row"
           >
-						{ feedback ?
-							<Typography variant="h6" align="inherit" style={{ paddingRight: 20 }}>
-								{ feedback }
-							</Typography>
-							: null
-						}
+            {feedback ? (
+              <Typography
+                variant="h6"
+                align="inherit"
+                style={{ paddingRight: 20 }}
+              >
+                {feedback}
+              </Typography>
+            ) : null}
             <Button
               variant="contained"
               onClick={this.submit}
@@ -244,8 +199,8 @@ class DashboardWork extends Component {
   }
 }
 
-DashboardWork.propTypes = {
+DashboardHome.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default compose(withStyles(styles), withFirebase)(DashboardWork);
+export default compose(withStyles(styles), withFirebase)(DashboardHome);
