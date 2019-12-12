@@ -1,6 +1,7 @@
 const functions = require("firebase-functions");
 const app = require("express")();
 const cors = require("cors");
+const cookieParser = require('cookie-parser')();
 
 const FBAuth = require('./util/FBauth')
 // access admin object
@@ -18,6 +19,8 @@ const { adminLogin, adminLogout, uploadArtWork, updateArtWork, deleteArtWork, up
 
 // Automatically allow cross-origin requests
 app.use(cors({ origin: true, credentials: true }))
+
+app.use(cookieParser);
 
 // Admin routes
 app.post("/admin/login", adminLogin);

@@ -16,6 +16,19 @@ const getRequest = (url, data) => {
   })
 };
 
+const getAuthRequest = (url, data, token) => {
+  return new Promise((resolve, reject) => {
+    axios.get(httpUrl + url, { params: data || {}, withCredentials: true, 
+      headers: { 'Authorization': 'Bearer ' + token } })
+      .then(response => {
+        resolve(response.data);
+      })
+      .catch(error => {
+        reject(error);
+      })
+  })
+};
+
 const delRequest = (url, data) => {
   return new Promise((resolve, reject) => {
     axios.delete(httpUrl + url, { data })
@@ -58,6 +71,7 @@ const postRequest = (url, data, token) => {
 };
 export default {
   get: getRequest,
+  getAuth: getAuthRequest,
   del: delRequest,
   put: putRequest,
   post: postRequest
