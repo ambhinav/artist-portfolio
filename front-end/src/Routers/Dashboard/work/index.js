@@ -165,7 +165,7 @@ class DashboardWork extends Component {
       imgUrl,
       title,
       category,
-      edit: true
+      edit: false
     };
 
     this.props.firebase
@@ -181,7 +181,8 @@ class DashboardWork extends Component {
               imgUrl: "",
               title: "",
               category: "",
-              feedback: "Artwork uploaded!"
+              feedback: "Artwork uploaded!",
+              currentWork: this.state.currentWork.concat([payload])
             });
           })
           .catch(err => {
@@ -282,7 +283,7 @@ class DashboardWork extends Component {
                     </Typography>
                   </ExpansionPanelSummary>
                   <ExpansionPanelDetails>
-                    <Grid alignItems="flex-start" direction="row">
+                    <Grid container alignItems="flex-start" direction="row">
                       <Typography>Category: {work.category}</Typography>
                       <Button
                         variant="contained"
