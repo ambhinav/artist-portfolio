@@ -1,6 +1,7 @@
 import app from "firebase/app";
 import "firebase/auth";
 import "firebase/database";
+import "firebase/storage"
 
 import FBconfig from "../../assets/secrets/FBconfig";
 
@@ -10,6 +11,7 @@ class Firebase {
 
     this.auth = app.auth();
     this.db = app.database();
+    this.storageRef = app.storage().ref();
   }
 
   // ** Auth API **
@@ -21,7 +23,20 @@ class Firebase {
 
   // *** User API ***
 
-  user = uid => this.db.ref(`users/${uid}`);
+  getUserToken = () => 
+    this.auth.currentUser.getIdToken()
+  // user = uid => this.db.ref(`users/${uid}`);
+
+
+
+  // *** Cloud storage API ***
+
+  uploadFileToStorage = (location, file) => 
+    this.storageRef.child(location).put(file)
+
+  getImageUrl = (location) =>
+    this.storageRef.child(location).getDownloadURL()
+
 }
 
 export default Firebase;

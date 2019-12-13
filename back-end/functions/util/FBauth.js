@@ -13,11 +13,13 @@ module.exports = (req, res, next) => {
     admin.auth().verifyIdToken(idToken)
         .then(decodedToken => {
             console.log(decodedToken);
-            return next();
+            next();
+            return;
         })
         .catch(err => {
             console.log('Error while verifying token', err)
-            return res.status(403).json(err);
+            res.status(403).json(err);
+            return;
         })
 
 }

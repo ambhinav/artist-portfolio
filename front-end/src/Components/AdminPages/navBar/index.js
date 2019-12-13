@@ -97,7 +97,7 @@ class NavBar extends Component {
                             variant="temporary"
                             open={openDrawer}
                             classes={{ paper: classes.drawerPaper }}
-                            ModalProps={{ keepMounted: true }}
+                            // ModalProps={{ keepMounted: true }}
                         >
                             <SideDrawerMobile handleCloseDrawer={this.handleCloseDrawer} />
                         </Drawer>
@@ -107,6 +107,7 @@ class NavBar extends Component {
                             classes={{ paper: classes.drawerPaper }}
                             variant="permanent"
                             open
+                            // ModalProps={{ keepMounted: true }}
                         >
                             <SideDrawerBrowser handleCloseDrawer={this.handleCloseDrawer} />
                         </Drawer>

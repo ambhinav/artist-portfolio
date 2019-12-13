@@ -25,12 +25,12 @@ import { withFirebase } from "../../Firebase";
 const menuOptions = [
   {
     title: "Dashboard",
-    to: "/dashboard",
+    to: "/admin/dashboard",
     icon: <Dashboard />
   },
   {
     title: "Work",
-    to: "/admin/work",
+    to: "/admin/dashboard/work",
     icon: <Terrain />
   },
   {
@@ -42,14 +42,6 @@ const menuOptions = [
     title: "Home",
     to: "/admin/home",
     icon: <Home />
-  }
-];
-
-const settingOptions = [
-  {
-    title: "Settings",
-    to: "/admin/settings",
-    icon: <Settings />
   }
 ];
 
@@ -134,12 +126,6 @@ class SideDrawer extends Component {
         </List>
         <Divider />
         <List>
-          {settingOptions.map(text => (
-            <ListItem button key={text.title} component={Link} to={text.to}>
-              <ListItemIcon>{text.icon}</ListItemIcon>
-              <ListItemText primary={text.title} />
-            </ListItem>
-          ))}
           <ListItem button key="Logout" onClick={this.logout}>
             <ListItemIcon>
               <Exittoapp />
@@ -156,4 +142,4 @@ SideDrawer.propTypes = {
   classes: PropTypes.object.isRequired
 };
 
-export default withStyles(styles)(withRouter(withFirebase(SideDrawer)));
+export default withStyles(styles)(withFirebase(withRouter(SideDrawer)));

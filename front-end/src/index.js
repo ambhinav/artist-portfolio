@@ -8,3 +8,5 @@ ReactDOM.render(
     <Routing />
 </FirebaseContext.Provider>
 , document.getElementById('root'));
+
+module.hot.accept()
