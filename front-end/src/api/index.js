@@ -29,9 +29,10 @@ const getAuthRequest = (url, data, token) => {
   })
 };
 
-const delRequest = (url, data) => {
+const delRequest = (url, token) => {
   return new Promise((resolve, reject) => {
-    axios.delete(httpUrl + url, { data })
+    axios.delete(httpUrl + url,
+      { headers: { 'Authorization': 'Bearer ' + token } })
       .then(response => {
         resolve(response.data);
       })

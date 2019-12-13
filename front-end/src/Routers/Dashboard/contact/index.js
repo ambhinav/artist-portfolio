@@ -73,7 +73,9 @@ class Contact extends Component {
         <NavBar title={title} />
         <main className={classes.content}>
           <div className={classes.toolbar} />
-          <Typography>Here are your most recent contact requests:</Typography>
+          <Typography variant="h6" style={{ marginBottom: '50px' }} align="center">
+            Here are your most recent contact requests:
+          </Typography>
           {this.state.contactReqs ? (
             this.state.contactReqs.map((contact, index) => (
               <ExpansionPanel key={index}>
@@ -84,7 +86,7 @@ class Contact extends Component {
                 >
                   <Typography className={classes.heading}>
                     Subject: {contact.subject} -{" "}
-										{/* {dateFnsFormat(contact.createdAt, "YYYY/MM/DD HH:mm")} */}
+                    {/* Requested on: {new Date(contact.createdAt.toDate()).toDateString()} */}
                   </Typography>
                 </ExpansionPanelSummary>
                 <ExpansionPanelDetails>
