@@ -45,14 +45,6 @@ const menuOptions = [
   }
 ];
 
-const settingOptions = [
-  {
-    title: "Settings",
-    to: "/admin/settings",
-    icon: <Settings />
-  }
-];
-
 const drawerWidth = 240;
 
 const styles = theme => ({
@@ -134,12 +126,6 @@ class SideDrawer extends Component {
         </List>
         <Divider />
         <List>
-          {settingOptions.map(text => (
-            <ListItem button key={text.title} component={Link} to={text.to}>
-              <ListItemIcon>{text.icon}</ListItemIcon>
-              <ListItemText primary={text.title} />
-            </ListItem>
-          ))}
           <ListItem button key="Logout" onClick={this.logout}>
             <ListItemIcon>
               <Exittoapp />
