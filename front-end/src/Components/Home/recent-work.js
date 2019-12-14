@@ -1,49 +1,77 @@
-import React from 'react';
-import { makeStyles } from '@material-ui/core/styles';
-import GridList from '@material-ui/core/GridList';
-import GridListTile from '@material-ui/core/GridListTile';
-import GridListTileBar from '@material-ui/core/GridListTileBar';
-import ListSubheader from '@material-ui/core/ListSubheader';
-import IconButton from '@material-ui/core/IconButton';
-import InfoIcon from '@material-ui/icons/Info';
-import { tileData } from './tile-data';
+import React from "react";
+import { withStyles } from "@material-ui/core/styles";
+import GridList from "@material-ui/core/GridList";
+import GridListTile from "@material-ui/core/GridListTile";
+import GridListTileBar from "@material-ui/core/GridListTileBar";
+import ListSubheader from "@material-ui/core/ListSubheader";
+import IconButton from "@material-ui/core/IconButton";
+import InfoIcon from "@material-ui/icons/Info";
+import { tileData } from "./tile-data";
+import api from "../../api";
+import ImageGallery from "react-image-gallery";
+import ImageCarousell from "./ImageCarousell";
 
-const useStyles = makeStyles(theme => ({
+const styles = theme => ({
   root: {
-    display: 'flex',
-    flexWrap: 'wrap',
-    justifyContent: 'space-around',
-    overflow: 'hidden',
+    display: "flex",
+    flexWrap: "wrap",
+    justifyContent: "space-around",
+    overflow: "hidden",
     // backgroundColor: theme.palette.background.paper,
-    background: 'inherit'
+    background: "inherit"
   },
   gridList: {
-    width: '90%',
-    height: '450px',
+    width: "90%",
+    height: "450px"
   },
   icon: {
-    color: 'rgba(255, 255, 255, 0.54)',
-  },
-}));
+    color: "rgba(255, 255, 255, 0.54)"
+  }
+});
 
-const RecentWork = () => {
-  const classes = useStyles();
-  
+class RecentWork extends React.Component {
+  constructor(props) {
+    super(props);
 
-  return (
-    <div className={classes.root}>
-      <GridList cellHeight={180} className={classes.gridList}>
-        <GridListTile key="Subheader" cols={2} style={{ height: 'auto' }}>
-          <ListSubheader component="div" style={{color: '#fff'}}>Recent Work</ListSubheader>
-        </GridListTile>
-        {tileData.map(tile => (
-          <GridListTile key={tile.img}>
-            <img src={tile.img} alt={tile.title} />
-          </GridListTile>
-        ))}
-      </GridList>
-    </div>
-  );
+    this.state = {
+      work: null
+    };
+  }
+
+  componentDidMount() {
+    api
+      .get("/home/info")
+      .then(res => {
+        const work = this.processData(res)
+        this.setState({
+          work
+        });
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  }
+
+  processData(data) {
+    let work = []
+    data.forEach(art => {
+      work.push({
+        original: art.imgUrl,
+        thumbnail: art.imgUrl
+      })
+    });
+    return work
+  }
+
+  render() {
+    const { classes } = this.props;
+    const { work } = this.state;
+    return (
+      <div className={classes.root}>
+        {work ? <ImageCarousell work={work} /> : null }
+      </div>
+    );
+  }
 }
 
-export default RecentWork;
+export default withStyles(styles)(RecentWork);
