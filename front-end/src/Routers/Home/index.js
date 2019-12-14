@@ -7,12 +7,14 @@ import Navbar from '../../Components/navBar/navbar'
 const App = () => {
 
     return (
-        <div>
-            <div className='wrapper'>
-                <Navbar />
+        <div id="container">
+            <Navbar />
+            <div id="content">
                 <Content />
             </div>
-            <Footer />
+            <div id="footer">
+                <Footer />
+            </div>
         </div>
     )
 }

@@ -21,6 +21,7 @@ const styles = theme => ({
     // background: 'linear-gradient(180deg, #273747 10%, #203a43 30%, #2c5364 60%)',
     // background: 'linear-gradient(180deg, #0f2027 , #203a43 , #2c5364 )',
     background: '#0f2027',
+    minHeight: '950px',
   },
   paper: {
     padding: theme.spacing(2),

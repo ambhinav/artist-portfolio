@@ -21,7 +21,8 @@ const styles = theme => ({
   root: {
     flexGrow: 1,
     background: "#0f2027",
-    paddingBottom: "50px"
+    minHeight: '950px',
+    paddingBottom: '5em'
   },
   paper: {
     padding: theme.spacing(2),

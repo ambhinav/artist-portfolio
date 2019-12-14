@@ -12,6 +12,7 @@ const useStyles = makeStyles(theme => ({
     // background: 'linear-gradient(180deg, #273747 10%, #203a43 30%, #2c5364 60%)',
     background: 'linear-gradient(180deg, #0f2027 , #203a43 , #2c5364 )',
     textAlign: 'center',
+    paddingBottom: '5em',
   },
   paper: {
     textAlign: 'center',

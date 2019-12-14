@@ -5,12 +5,14 @@ import Footer from '../../Components/footer';
 
 const App = () => {
     return (
-        <div>
-            <div className='wrapper'>
-                <NavBar />
+        <div id="container">
+            <NavBar />
+            <div id='content'>
                 <Work />
             </div>
-            <Footer />
+            <div id="footer">
+                <Footer />
+            </div>
         </div>
     )
 }
