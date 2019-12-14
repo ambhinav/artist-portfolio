@@ -13,7 +13,7 @@ const useStyles = makeStyles({
         maxWidth: 600,
     },
     media: {
-        height: 400,
+        height: 300,
         minWidth: 400
     },
     content: {
@@ -30,7 +30,7 @@ const StyledCardContent = withStyles({
 
 const MediaCard = (props) => {
     const classes = useStyles();
-    const { imgUrl, title, description } = props
+    const { imgUrl, title } = props
 
     return (
         <Card className={classes.card}>
@@ -41,19 +41,11 @@ const MediaCard = (props) => {
                     title={title}
                 />
                 <StyledCardContent>
-                    <Typography gutterBottom variant="h5" component="h2">
+                    <Typography gutterBottom variant="h5" component="h2" align="center">
                         {title}
                     </Typography>
                 </StyledCardContent>
             </CardActionArea>
-            {/* <CardActions>
-        <Button size="small" color="primary">
-          Share
-        </Button>
-        <Button size="small" color="primary">
-          Learn More
-        </Button>
-      </CardActions> */}
         </Card>
     );
 }

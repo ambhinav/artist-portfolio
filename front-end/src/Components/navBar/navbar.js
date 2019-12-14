@@ -26,6 +26,7 @@ const drawerWidth = 240
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
+    paddingBottom: '2em'
   },
   title: {
     flexGrow: 1,
@@ -205,7 +206,7 @@ export default function ButtonAppBar() {
             <List
               id="resized-list"
               anchorEl={anchorEl}
-              keepMounted
+              keepmounted
               open={Boolean(anchorEl)}
               onClose={handleClose}
             >

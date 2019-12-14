@@ -88,7 +88,6 @@ const StyledGrid = withStyles({
 
 const placeHolderLogo = []
 
-
 const Content = (props) => {
 
   const [windowWidth, setWindowWidth] = React.useState(window.innerWidth)
@@ -100,29 +99,13 @@ const Content = (props) => {
 
   const { classes } = props
 
-  // put fake stories here
-
   return (
     <div className={classes.root}>
-      {/* <div className={classes.paper}>
-        <Typography variant='h3' style={{ color: '#fa462f' }}> Illustration & Character Design </Typography>
-        <div className={classes.seperator} />
-      </div> */}
       <StyledGrid>
         <Grid container justify='space-evenly' direction='row'>
-          <Grid item xs={3}>
-            <Typography>
-              Jerome
-            </Typography>
-          </Grid>
           <Grid item xs={6}>
             <Typography>
               Insert logo here
-            </Typography>
-          </Grid>
-          <Grid item xs={3}>
-            <Typography>
-              Tieh
             </Typography>
           </Grid>
         </Grid>

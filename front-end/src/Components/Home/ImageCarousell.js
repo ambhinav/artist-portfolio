@@ -13,15 +13,10 @@ const ImageCarousell = (props) => {
 
     return (
         <div style={{ textAlign: "center", margin: 10, paddingLeft: "2%", paddingRight: "2%", paddingBottom: "2%" }}>
-            <h3 style={{ fontFamily: "Montserrat, sans-serif", fontSize: '2em' }}>Recent work</h3>
-
             {props.work.length !== 0 ?
                 <ImageGallery showNav={true} showPlayButton={true} autoPlay={true} lazyLoad={true} items={props.work} />
                 :
-
                 <div>No data to display</div>
-
-
             }
         </div >
     );
