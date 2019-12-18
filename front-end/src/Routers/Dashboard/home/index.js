@@ -50,10 +50,6 @@ class DashboardHome extends Component {
     this.retrieveImageUrl = this.retrieveImageUrl.bind(this);
   }
 
-  componentDidMount() {
-    console.log("Recent work mounted!");
-  }
-
   watchImgUrl(event) {
     this.setState({
       imgUrl: event.target.value
@@ -86,7 +82,6 @@ class DashboardHome extends Component {
     this.props.firebase
       .getImageUrl("/recentwork/" + file.name)
       .then(url => {
-        console.log(url);
         this.setState({
           imgUrl: url
         });
@@ -104,8 +99,6 @@ class DashboardHome extends Component {
     this.props.firebase
       .getUserToken()
       .then(token => {
-        // make api call to upload to worksByCategory
-        console.log(payload);
         api
           .post("/admin/home/putrecentwork", payload, token)
           .then(res => {

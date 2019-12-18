@@ -122,7 +122,7 @@ class Work extends React.Component {
               </div>
             ))
           ) : (
-            <Typography>Loading...</Typography>
+            null
           )}
         </StyledGrid>
       </div>

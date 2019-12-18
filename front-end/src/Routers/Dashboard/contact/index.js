@@ -47,12 +47,10 @@ class Contact extends Component {
   }
 
   componentDidMount() {
-    console.log("Contact page mounted!");
     this.props.firebase.getUserToken().then(token => {
       api
         .getAuth("/admin/info/contact", null, token)
         .then(res => {
-          console.log(res);
           this.setState({
             contactReqs: res
           });

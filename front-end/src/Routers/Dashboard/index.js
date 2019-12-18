@@ -38,14 +38,6 @@ const styles = theme => ({
 
 class Dashboard extends Component {
 
-  componentDidMount() {
-    console.log("Dashboard mounted!")
-  }
-
-  componentWillUnmount() {
-    console.log("Dashboard unmounted!")
-  }
-
   render() {
     const { classes } = this.props;
     const title = "Main";

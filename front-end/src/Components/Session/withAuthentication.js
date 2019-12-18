@@ -13,7 +13,6 @@ const withAuthentication = Component => {
     useEffect(() => {
       const checkAuthStatus = () => { 
         props.firebase.auth.onAuthStateChanged(authUser => {
-          console.log(authUser);
           authUser ? setAuthUser(authUser) : setAuthUser(null);
         });
       }

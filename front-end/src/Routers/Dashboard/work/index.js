@@ -59,15 +59,12 @@ class DashboardWork extends Component {
     this.submit = this.submit.bind(this);
     this.handleOnDrop = this.handleOnDrop.bind(this);
     this.retrieveImageUrl = this.retrieveImageUrl.bind(this);
-    this.deleteEntry = this.deleteEntry.bind(this);
   }
 
   componentDidMount() {
-    console.log("Contact page mounted!");
     api
       .get("/work/info")
       .then(res => {
-        console.log(res);
         this.setState({
           currentWork: res
         });
@@ -124,7 +121,6 @@ class DashboardWork extends Component {
     this.props.firebase
       .getImageUrl("/worksbycategory/" + file.name)
       .then(url => {
-        console.log(url);
         this.setState({
           imgUrl: url
         });
@@ -146,7 +142,6 @@ class DashboardWork extends Component {
       .getUserToken()
       .then(token => {
         // make api call to upload to worksByCategory
-        console.log(payload);
         api
           .post("/admin/work/putartwork", payload, token)
           .then(res => {
