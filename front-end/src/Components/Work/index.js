@@ -66,13 +66,13 @@ class Work extends React.Component {
 
     data.forEach(art => {
       console.log(art)
-      if (art.category == categories[0]) {
+      if (art.category === categories[0]) {
         work["Character Design"].push(art);
-      } else if (art.category == categories[1]) {
+      } else if (art.category === categories[1]) {
         work["Environment Design"].push(art);
-      } else if (art.category == categories[2]) {
+      } else if (art.category === categories[2]) {
         work["Sketches and Misc"].push(art);
-      } else if (art.category == categories[3]) {
+      } else if (art.category === categories[3]) {
         work["Logos/Graphic Design"].push(art);
       } else {
         work.Others.push(art)

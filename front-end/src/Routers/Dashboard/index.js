@@ -37,9 +37,6 @@ const styles = theme => ({
 });
 
 class Dashboard extends Component {
-  constructor(props) {
-    super(props);
-  }
 
   componentDidMount() {
     console.log("Dashboard mounted!")

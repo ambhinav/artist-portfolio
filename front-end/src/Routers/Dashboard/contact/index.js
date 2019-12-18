@@ -13,7 +13,6 @@ import NavBar from "../../../Components/AdminPages/navBar";
 import api from "../../../api";
 import { compose } from "recompose";
 import { withFirebase } from "../../../Components/Firebase";
-import dateFnsFormat from "date-fns/format";
 
 const styles = theme => ({
   root: {

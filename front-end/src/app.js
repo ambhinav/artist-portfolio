@@ -1,5 +1,5 @@
 import React from "react";
-import { Route, Switch, Router, withRouter } from "react-router-dom";
+import { Route, Switch, Router } from "react-router-dom";
 
 // Unprotected Routes
 import App from "./Routers/Home";

@@ -10,12 +10,9 @@ import { Link } from "react-router-dom";
 import Dashboard from "@material-ui/icons/Dashboard";
 import Home from "@material-ui/icons/Home";
 import Permphone from "@material-ui/icons/PermPhoneMsg";
-import Settings from "@material-ui/icons/Settings";
 import Terrain from "@material-ui/icons/Terrain";
 import Exittoapp from "@material-ui/icons/ExitToApp";
-import { withRouter } from "react-router-dom";
 import { withFirebase } from '../../Firebase'
-import { compose } from 'recompose'
 
 const sideNavBarBrowser = [
   {

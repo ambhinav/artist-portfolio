@@ -14,7 +14,6 @@ import Drawer from '@material-ui/core/Drawer';
 import ChevronLeftIcon from '@material-ui/icons/ChevronLeft';
 import ChevronRightIcon from '@material-ui/icons/ChevronRight';
 import ListItem from '@material-ui/core/ListItem';
-import ListItemIcon from '@material-ui/core/ListItemIcon';
 import List from '@material-ui/core/List';
 import Divider from '@material-ui/core/Divider';
 import clsx from 'clsx';
@@ -26,7 +25,6 @@ const drawerWidth = 240
 const useStyles = makeStyles((theme) => ({
   root: {
     flexGrow: 1,
-    paddingBottom: '2em'
   },
   title: {
     flexGrow: 1,
@@ -50,9 +48,6 @@ const useStyles = makeStyles((theme) => ({
       easing: theme.transitions.easing.easeOut,
       duration: theme.transitions.duration.enteringScreen,
     }),
-  },
-  menuButton: {
-    marginRight: theme.spacing(2),
   },
   hide: {
     display: 'none',

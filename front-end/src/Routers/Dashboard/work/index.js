@@ -53,9 +53,6 @@ class DashboardWork extends Component {
       feedback: null,
       currentWork: null
     };
-    this.deleteEntry = this.deleteEntry.bind(this);
-    // this.resetEntries = this.resetEntries.bind(this);
-    this.newEntry = this.newEntry.bind(this);
     this.watchImgUrl = this.watchImgUrl.bind(this);
     this.watchTitle = this.watchTitle.bind(this);
     this.watchCategory = this.watchCategory.bind(this);
@@ -78,29 +75,6 @@ class DashboardWork extends Component {
       .catch(err => {
         console.log(err);
       });
-  }
-
-  deleteEntry(event) {
-    const id = event.currentTarget.value;
-  }
-
-  // resetEntries () {
-  //     resetEntries();
-  // }
-
-  newEntry() {
-    const { imgUrl, title, category } = this.state;
-    const payload = {
-      imgUrl,
-      title,
-      category,
-      edit: true
-    };
-    this.setState({
-      imgUrl: "",
-      title: "",
-      category: ""
-    });
   }
 
   watchImgUrl(event) {
@@ -166,7 +140,7 @@ class DashboardWork extends Component {
       title,
       category,
       edit: false
-    };
+    }
 
     this.props.firebase
       .getUserToken()
@@ -213,7 +187,7 @@ class DashboardWork extends Component {
 
   render() {
     const { classes } = this.props;
-    const { imgUrl, title, category, feedback, currentWork } = this.state;
+    const { title, category, feedback, currentWork } = this.state;
     const navTitle = "Work";
     return (
       <div className={classes.root}>

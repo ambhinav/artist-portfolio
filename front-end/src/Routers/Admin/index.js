@@ -8,7 +8,6 @@ import TextField from "@material-ui/core/TextField";
 import Button from "@material-ui/core/Button";
 import { Link } from "react-router-dom";
 import Navbar from "../../Components/navBar/navbar";
-import axios from 'axios';
 import { withFirebase } from '../../Components/Firebase';
 import { withRouter } from 'react-router-dom';
 import { compose } from 'recompose';

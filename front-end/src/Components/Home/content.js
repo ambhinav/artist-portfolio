@@ -1,18 +1,8 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { withStyles } from '@material-ui/core/styles';
 import Grid from '@material-ui/core/Grid';
-import Card from '@material-ui/core/Card';
-import CardContent from '@material-ui/core/CardContent';
 import Typography from '@material-ui/core/Typography';
-import Button from '@material-ui/core/Button';
-import { Link } from 'react-router-dom';
-import Hidden from '@material-ui/core/Hidden';
-import { Email } from '@material-ui/icons'
-import { Paper } from '@material-ui/core';
-import RecentWorkMobile from './recent-work-mobile'
 import RecentWork from './recent-work';
-import { minHeight } from '@material-ui/system';
-// import { theWork } from '../../assets/Images/'
 
 const styles = theme => ({
   root: {
@@ -82,11 +72,10 @@ const StyledGrid = withStyles({
   root: {
     background: 'inherit',
     textAlign: 'center',
-    minHeight: '900px'
+    minHeight: '900px',
+    paddingTop: '3em'
   }
 })(Grid)
-
-const placeHolderLogo = []
 
 const Content = (props) => {
 
@@ -102,21 +91,8 @@ const Content = (props) => {
   return (
     <div className={classes.root}>
       <StyledGrid>
-        <Grid container justify='space-evenly' direction='row'>
-          <Grid item xs={6}>
-            <Typography>
-              Insert logo here
-            </Typography>
-          </Grid>
-        </Grid>
-        <Typography variant='h4' style={{ color: '#fa462f' }}> Illustration & Character Design </Typography>
+        <Typography variant='h4' style={{ color: '#fa462f' }}> Recent Work </Typography>
         <div className={classes.seperator} />
-        {/* {windowWidth > 600
-          ?
-          <RecentWork />
-          :
-          <RecentWorkMobile />
-        } */}
         <RecentWork />
       </StyledGrid>
     </div >

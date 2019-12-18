@@ -44,9 +44,6 @@ class DashboardHome extends Component {
       files: [],
       feedback: null
     };
-    this.deleteEntry = this.deleteEntry.bind(this);
-    // this.resetEntries = this.resetEntries.bind(this);
-    this.newEntry = this.newEntry.bind(this);
     this.watchImgUrl = this.watchImgUrl.bind(this);
     this.submit = this.submit.bind(this);
     this.handleOnDrop = this.handleOnDrop.bind(this);
@@ -55,24 +52,6 @@ class DashboardHome extends Component {
 
   componentDidMount() {
     console.log("Recent work mounted!");
-  }
-
-  deleteEntry(event) {
-    const id = event.currentTarget.value;
-  }
-
-  // resetEntries () {
-  //     resetEntries();
-  // }
-
-  newEntry() {
-    const { imgUrl, title, category } = this.state;
-    const payload = {
-      imgUrl,
-    };
-    this.setState({
-      imgUrl: "",
-    });
   }
 
   watchImgUrl(event) {
