@@ -47,7 +47,6 @@ class Work extends React.Component {
     // fetch work
     api.get("/work/info").then(res => {
       const work = this.processData(res)
-      console.log(work)
       this.setState({
         work
       });
@@ -55,7 +54,6 @@ class Work extends React.Component {
   }
 
   processData(data) {
-    console.log(data)
     let work = {
       "Character Design": [],
       "Environment Design": [],
@@ -65,7 +63,6 @@ class Work extends React.Component {
     };
 
     data.forEach(art => {
-      console.log(art)
       if (art.category === categories[0]) {
         work["Character Design"].push(art);
       } else if (art.category === categories[1]) {

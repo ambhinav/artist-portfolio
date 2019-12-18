@@ -63,7 +63,6 @@ const postRequest = (url, data, token) => {
     axios.post(httpUrl + url, data, config)
       .then(response => {
         resolve(response.data);
-        console.log(response)
       })
       .catch(error => {
         reject(error);
